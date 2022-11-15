@@ -45,33 +45,19 @@ int saisieEntier(const string& MSG, int min, int max, const string& MSG_ERREUR) 
 // Cette fonction permet à l'utilisateur de recommencer le programme
 bool repondOui() {
     char saisie;                // Variable de stockage de la saisie
-    bool erreur;                // Variable de stockage de l'état de la saisie
-    bool recommencer;           // Variable de stockage de la réponse de retour
 
     do {
         // Affichage message de demande de saisie
         cout << endl << "Voulez-vous recommencer le programme ? (o/n) : ";
+        cin >> saisie;
 
-        // Vérifie si le flux est cassé ou si la valeur est en dehors des valeurs minimum et maximum
-        erreur = not(cin >> saisie) or (saisie != 'o' and saisie != 'n');
-
-        // Si la saisie est incorrecte affiche message erreur et répare le flux
-        if (erreur) {
-            cout << "/!\\ Veuillez saisir 'o' ou 'n' ..." << endl;
-            cin.clear();
-        }
+        toupper(saisie);
 
         VIDER_BUFFER;
 
-    }while(erreur);
+    }while(saisie != 'O' and saisie != 'N');
 
     // Si l'utilisateur a saisi 'o' on retourne true
-    if (saisie == 'o') {
-        recommencer = true;
-    }
-    else {
-        recommencer = false;
-    }
-
-    return recommencer;
+    return saisie == 'O';
 }
+
