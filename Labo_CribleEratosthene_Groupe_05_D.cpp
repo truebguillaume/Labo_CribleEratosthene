@@ -22,18 +22,18 @@
 
 using namespace std;
 
-vector<bool> calculerCrible(const int tailleVector){
+vector<bool> calculerCrible(const size_t tailleVector){
     vector<bool> vecteurCriblage((unsigned long)tailleVector, true);
 
-    for (int i = 1 ; i < tailleVector ; ++i){
+    for (unsigned long i = 1 ; i < tailleVector ; ++i){
         if(vecteurCriblage[i]){
-            for (int j = i + 1 ; j < tailleVector ; ++j){
-                if((j+1)%(i+1) == 0)
-                    vecteurCriblage[j] = false;
-            }
-//            for(int j = i ; j < pow(tailleVector, 1 / i + 1) ; ++j){
-//                vecteurCriblage[pow(i+1, j)] = false;
-//            }
+//            for (int j = i + 1 ; j < tailleVector ; ++j)
+//                if((j+1)%(i+1) == 0)
+//                    vecteurCriblage[j] = false;
+
+            for (unsigned long j = 2; j < tailleVector / (i - 1); ++j)
+                vecteurCriblage[(i + 1) * j - 1] = false;
+
         }
     }
 
@@ -54,7 +54,7 @@ int main() {
     const int MAX_VALEUR = 100;
     int nbreValeurs;
 
-    nbreValeurs = saisieEntier("nbre de valeurs ", MIN_VALEUR, MAX_VALEUR, "Valeur erronee!");
+    nbreValeurs = 55; //saisieEntier("nbre de valeurs ", MIN_VALEUR, MAX_VALEUR, "Valeur erronee!");
 
     vector<bool> vecteurCriblage = calculerCrible(nbreValeurs);
     //vector<int>  vecteurNbrPremier = calculerNbrPremier(vecteurCriblage);

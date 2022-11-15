@@ -12,6 +12,8 @@
 
 #include <iostream>
 #include "annexe.h"
+#include <limits>       //Numeric limits
+
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
