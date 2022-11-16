@@ -101,6 +101,8 @@ int main() {
 
     const int MIN_VALEUR = 2;
     const int MAX_VALEUR = 100;
+    const int NBRE_COLONNE = 10;
+    const int LARGEUR_COLONNE = 4;
     size_t nbreValeurs;
 
     nbreValeurs = 100; //saisieEntier("nbre de valeurs ", MIN_VALEUR, MAX_VALEUR, "Valeur
@@ -110,18 +112,8 @@ int main() {
     vector<char> vecteurCriblageChar = calculerCribleChar(nbreValeurs);
     //vector<int>  vecteurNbrPremier = calculerNbrPremier(vecteurCriblage);
 
-    afficheVecteurCriblage(vecteurCriblage, 10, 3, "criblage du tableau");
-    afficheVecteur(vecteurCriblageChar, 10, 3, "criblage du tableau");
-
-//    int compteur = 0;
-//    for(int i : vecteurCriblage){
-//        if(compteur == 10){
-//            compteur = 0;
-//            cout << endl;
-//        }
-//        cout << i << " ";
-//        compteur++;
-//    }
+    afficheVecteurCriblage(vecteurCriblage, NBRE_COLONNE, LARGEUR_COLONNE, "criblage du tableau");
+    afficheVecteur(vecteurCriblageChar, NBRE_COLONNE, LARGEUR_COLONNE, "criblage du tableau");
 
     return EXIT_SUCCESS;
 }
