@@ -15,6 +15,7 @@
 #include <string>
 #include <vector>
 #include <math.h>
+#include <iomanip>
 
 #include "annexe.h"     //Librairie personnelle
 
@@ -23,19 +24,31 @@
 using namespace std;
 
 vector<bool> calculerCrible(const size_t tailleVector){
-    vector<bool> vecteurCriblage((unsigned long)tailleVector, true);
+    vector<bool> vecteurCriblage(tailleVector, true);
 
-    for (unsigned long i = 1 ; i < tailleVector ; ++i){
-        if(vecteurCriblage[i]){
+    for (unsigned long i = 1 ; i < tailleVector ; ++i)
+        if(vecteurCriblage[i])
 //            for (int j = i + 1 ; j < tailleVector ; ++j)
 //                if((j+1)%(i+1) == 0)
 //                    vecteurCriblage[j] = false;
-
-            for (unsigned long j = 2; j < tailleVector / (i - 1); ++j)
+            for (unsigned long j = 2; j <= tailleVector / (i + 1); ++j)
                 vecteurCriblage[(i + 1) * j - 1] = false;
 
-        }
-    }
+    return vecteurCriblage;
+}
+
+vector<char> calculerCribleChar(const size_t tailleVector){
+    vector<char> vecteurCriblage(tailleVector, 'O');
+
+    vecteurCriblage[0] = ' ';
+
+    for (unsigned long i = 1 ; i < tailleVector ; ++i)
+        if(vecteurCriblage[i])
+//            for (int j = i + 1 ; j < tailleVector ; ++j)
+//                if((j+1)%(i+1) == 0)
+//                    vecteurCriblage[j] = 'X';
+            for (unsigned long j = 2; j <= tailleVector / (i + 1); ++j)
+                vecteurCriblage[(i + 1) * j - 1] = 'X';
 
     return vecteurCriblage;
 }
@@ -48,26 +61,67 @@ vector<int> calculerNbrPremier(const vector<bool>& vecCrible){
 
 }
 
+void afficheVecteurCriblage(const vector<bool>& vecteur, const int nbreColonne,
+                    const int largeurColonne, const string& titre = ""){
+
+    cout << endl << titre << endl;
+
+    for (unsigned long i = 0 ; i < vecteur.size() ; ++i) {
+
+        if(i == 0){
+            cout << setw(largeurColonne) << " ";
+            continue;
+        }
+
+        if(vecteur[i])
+            cout << setw(largeurColonne) << "O";
+        else
+            cout << setw(largeurColonne) << "X";
+
+        if(nbreColonne > 0 && i % (unsigned long)nbreColonne == (unsigned long)nbreColonne - 1)
+            cout << endl;
+    }
+}
+
+void afficheVecteur(const vector<char>& vecteur, const int nbreColonne,
+                            const int largeurColonne, const string& titre = ""){
+
+    cout << endl << titre << endl;
+
+    for (unsigned long i = 0 ; i < vecteur.size() ; ++i) {
+        cout << setw(largeurColonne) << vecteur[i];
+
+        if( nbreColonne > 0 && i % (unsigned long)nbreColonne == (unsigned long)nbreColonne - 1
+        && i != 0 )
+            cout << endl;
+    }
+}
+
 int main() {
 
     const int MIN_VALEUR = 2;
     const int MAX_VALEUR = 100;
-    int nbreValeurs;
+    size_t nbreValeurs;
 
-    nbreValeurs = 55; //saisieEntier("nbre de valeurs ", MIN_VALEUR, MAX_VALEUR, "Valeur erronee!");
+    nbreValeurs = 100; //saisieEntier("nbre de valeurs ", MIN_VALEUR, MAX_VALEUR, "Valeur
+    // erronee!");
 
     vector<bool> vecteurCriblage = calculerCrible(nbreValeurs);
+    vector<char> vecteurCriblageChar = calculerCribleChar(nbreValeurs);
     //vector<int>  vecteurNbrPremier = calculerNbrPremier(vecteurCriblage);
 
-    int compteur = 0;
-    for(int i : vecteurCriblage){
-        if(compteur == 10){
-            compteur = 0;
-            cout << endl;
-        }
-        cout << i << " ";
-        compteur++;
-    }
+    afficheVecteurCriblage(vecteurCriblage, 10, 3, "criblage du tableau");
+    afficheVecteur(vecteurCriblageChar, 10, 3, "criblage du tableau");
+
+//    int compteur = 0;
+//    for(int i : vecteurCriblage){
+//        if(compteur == 10){
+//            compteur = 0;
+//            cout << endl;
+//        }
+//        cout << i << " ";
+//        compteur++;
+//    }
 
     return EXIT_SUCCESS;
 }
