@@ -57,8 +57,11 @@ vector<int> calculerNbrPremier(const vector<bool>& vecCrible){
     vector<int> vecNbrPremier;
 
     for (vector<bool>::const_iterator i = vecCrible.begin(); i != vecCrible.end(); ++i)
-        cout << *i << " ";
+    {
+        if(*i)
+            cout << *i;
 
+    }
 }
 
 void afficheVecteurCriblage(const vector<bool>& vecteur, const int nbreColonne,
@@ -112,8 +115,10 @@ int main() {
     vector<char> vecteurCriblageChar = calculerCribleChar(nbreValeurs);
     //vector<int>  vecteurNbrPremier = calculerNbrPremier(vecteurCriblage);
 
-    afficheVecteurCriblage(vecteurCriblage, NBRE_COLONNE, LARGEUR_COLONNE, "criblage du tableau");
-    afficheVecteur(vecteurCriblageChar, NBRE_COLONNE, LARGEUR_COLONNE, "criblage du tableau");
+    //afficheVecteurCriblage(vecteurCriblage, NBRE_COLONNE, LARGEUR_COLONNE, "criblage du tableau");
+    //afficheVecteur(vecteurCriblageChar, NBRE_COLONNE, LARGEUR_COLONNE, "criblage du tableau");
+
+    calculerNbrPremier(vecteurCriblage);
 
     return EXIT_SUCCESS;
 }
