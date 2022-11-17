@@ -9,13 +9,13 @@
 // C++ version    : C++20
 //---------------------------------------------------------
 
-#include <iostream>     //cout, cin
-#include <cstdlib>      //EXIT_SUCCESS
-#include <limits>       //Numeric limits
-#include <vector>
+#include <cstdlib>              // EXIT_SUCCESS
+#include <limits>               // Numeric limits
+#include <vector>               // Vecteur
+#include <iostream>             // cout
 
-#include "annexe.h"     //Librairie personnelle
-#include "cribleEratosthene.h"
+#include "annexe.h"             // Librairie personnelle
+#include "cribleEratosthene.h"  // Librairie pour le criblage
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
@@ -29,13 +29,18 @@ int main() {
     const int LARGEUR_COLONNE = 4;
     size_t nbreValeurs;
 
-    nbreValeurs = saisieEntier("Nombre de valeurs : ", MIN_VALEUR, MAX_VALEUR, "Valeur eronnée!");
+    nbreValeurs = (size_t)saisieEntier("Nombre de valeurs : ", MIN_VALEUR, MAX_VALEUR,
+                                       "Valeur eronnée!");
 
-    vector<bool> vecteurCriblage   = calculerCrible(nbreValeurs);
-    afficheVecteurCriblage(vecteurCriblage, NBRE_COLONNE, LARGEUR_COLONNE, "Criblage du tableau");
+    vector<bool> vecteurCriblage   = cribleEratosthene(nbreValeurs);
+    afficheVecteur(vecteurCriblage, "Criblage du tableau", LARGEUR_COLONNE, NBRE_COLONNE);
 
-    vector<int>  vecteurNbrPremier = calculerNbrPremier(vecteurCriblage);
-    afficheVecteur(vecteurNbrPremier, NBRE_COLONNE, LARGEUR_COLONNE, "Nombres premiers");
 
+    vector<int>  vecteurNbrPremier = nbrsPremier(vecteurCriblage);
+    afficheVecteur(vecteurNbrPremier, "Nombres premiers", " / ");
+
+    //Fin de programme
+    cout << "Pressez ENTER pour quitter";
+    VIDER_BUFFER;   // Vider le buffer
     return EXIT_SUCCESS;
 }

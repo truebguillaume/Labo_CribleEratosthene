@@ -26,14 +26,11 @@ int  saisieEntier(const std::string& MSG, int min, int max, const std::string& M
 // @exceptions              : -
 bool repondOui();
 
-void afficheVecteurCriblage(const std::vector<bool>& vecteur, const int nbreColonne,
-                            const int largeurColonne, const std::string& titre);
+void afficheVecteur(const std::vector<bool>& vecteur, const std::string& titre = "",
+                    const int largeurColonne = 0, const int nbreColonne = 0);
 
-void afficheVecteur(const std::vector<char>& vecteur, const int nbreColonne,
-                    const int largeurColonne, const std::string& titre);
-
-
-void afficheVecteur(const std::vector<int>& vecteur, const int nbreColonne,
-                    const int largeurColonne, const std::string& titre);
+void afficheVecteur(const std::vector<int>& vecteur, const std::string& titre = "",
+                    const std::string& separateur = ", ", const int largeurColonne = 0,
+                    const int nbreColonne = 0);
 
 #endif //MODELCPP_ANNEXE_H

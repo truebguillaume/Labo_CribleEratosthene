@@ -19,8 +19,8 @@
     // ---------------------------------------------------------------------------------------------------------------------
     // @retour                  : une valeur de type bool avec true si la réponse était oui
     // @exceptions              : -
-    std::vector<bool> calculerCrible(size_t tailleVector);
+    std::vector<bool> cribleEratosthene(const size_t tailleVector);
 
-    std::vector<int> calculerNbrPremier(const std::vector<bool>& vecCrible);
+    std::vector<int> nbrsPremier(const std::vector<bool>& vecCrible);
 
 #endif // LABO_CRIBLEERATOSTHENE_CRIBLEERATOSTHENE_H

@@ -64,8 +64,8 @@ bool repondOui() {
     return saisie == 'O';
 }
 
-void afficheVecteurCriblage(const vector<bool>& vecteur, const int nbreColonne,
-                            const int largeurColonne, const string& titre = ""){
+void afficheVecteur(const vector<bool> &vecteur, const string &titre, const int largeurColonne,
+                    const int nbreColonne){
 
     cout << endl << titre << endl;
 
@@ -81,12 +81,15 @@ void afficheVecteurCriblage(const vector<bool>& vecteur, const int nbreColonne,
     }
 }
 
-void afficheVecteur(const vector<int>& vecteur, const int nbreColonne,
-                    const int largeurColonne, const string& titre = ""){
+void afficheVecteur(const vector<int>& vecteur, const string& titre, const string& separateur,
+                    const int largeurColonne, const int nbreColonne){
 
     cout << endl << titre << endl;
 
     for (unsigned long i = 0 ; i < vecteur.size() ; ++i) {
+
+        if(i != 0) cout << separateur;
+
         cout << setw(largeurColonne) << vecteur[i];
 
         if( nbreColonne > 0 && i % (unsigned long)nbreColonne == (unsigned long)nbreColonne - 1
