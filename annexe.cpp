@@ -10,10 +10,11 @@
 // C++ version    : C++20
 //---------------------------------------------------------
 
-#include <iostream>
 #include "annexe.h"
-#include <limits>       //Numeric limits
 
+#include <iostream>
+#include <limits>       //Numeric limits
+#include <iomanip>
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
@@ -61,5 +62,36 @@ bool repondOui() {
 
     // Si l'utilisateur a saisi 'o' on retourne true
     return saisie == 'O';
+}
+
+void afficheVecteurCriblage(const vector<bool>& vecteur, const int nbreColonne,
+                            const int largeurColonne, const string& titre = ""){
+
+    cout << endl << titre << endl;
+
+    for (unsigned long i = 0 ; i < vecteur.size() ; ++i) {
+
+        if(vecteur[i])
+            cout << setw(largeurColonne) << "O";
+        else
+            cout << setw(largeurColonne) << "X";
+
+        if(nbreColonne > 0 && i % (unsigned long)nbreColonne == (unsigned long)nbreColonne - 1)
+            cout << endl;
+    }
+}
+
+void afficheVecteur(const vector<int>& vecteur, const int nbreColonne,
+                    const int largeurColonne, const string& titre = ""){
+
+    cout << endl << titre << endl;
+
+    for (unsigned long i = 0 ; i < vecteur.size() ; ++i) {
+        cout << setw(largeurColonne) << vecteur[i];
+
+        if( nbreColonne > 0 && i % (unsigned long)nbreColonne == (unsigned long)nbreColonne - 1
+            && i != 0 )
+            cout << endl;
+    }
 }
 

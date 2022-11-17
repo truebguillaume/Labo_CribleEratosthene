@@ -3,6 +3,7 @@
 //
 
 #include <string>
+#include <vector>
 
 #ifndef MODELCPP_ANNEXE_H
 #define MODELCPP_ANNEXE_H
@@ -24,5 +25,15 @@ int  saisieEntier(const std::string& MSG, int min, int max, const std::string& M
 // @retour                  : une valeur de type bool avec true si la réponse était oui
 // @exceptions              : -
 bool repondOui();
+
+void afficheVecteurCriblage(const std::vector<bool>& vecteur, const int nbreColonne,
+                            const int largeurColonne, const std::string& titre);
+
+void afficheVecteur(const std::vector<char>& vecteur, const int nbreColonne,
+                    const int largeurColonne, const std::string& titre);
+
+
+void afficheVecteur(const std::vector<int>& vecteur, const int nbreColonne,
+                    const int largeurColonne, const std::string& titre);
 
 #endif //MODELCPP_ANNEXE_H

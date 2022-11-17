@@ -13,14 +13,14 @@
     #define LABO_CRIBLEERATOSTHENE_CRIBLEERATOSTHENE_H
 
     // Includes pour les éléments nécessaires au .h
-    #include <string>          // nécessaire pour les paramètres
+    #include <vector>          // nécessaire pour les paramètres
 
+    // Fonction permettant de demander à l'utilisateur une question en attendant une réponse oui ou non
+    // ---------------------------------------------------------------------------------------------------------------------
+    // @retour                  : une valeur de type bool avec true si la réponse était oui
+    // @exceptions              : -
+    std::vector<bool> calculerCrible(size_t tailleVector);
 
-    //-------------------------------------------------------------------------
-    // déclaration mise à disposition par le .h
-    extern const int CONSTANTE;
-
-    // un sous-programme
-    void sousPgm (const std::string& msg);
+    std::vector<int> calculerNbrPremier(const std::vector<bool>& vecCrible);
 
 #endif // LABO_CRIBLEERATOSTHENE_CRIBLEERATOSTHENE_H
