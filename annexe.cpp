@@ -1,33 +1,36 @@
-//---------------------------------------------------------
-// Demo           : annexe.cpp
+//----------------------------------------------------------------------------------------------------------------------
+// Demo           : Labo_CribleEratosthene_Groupe_05_D
 // Fichier        : annexe.cpp
-// Auteur(s)      : Trüeb Guillaume
+// Auteur(s)      : Urs Behrmann & Trüeb Guillaume
 // But            : Fournir différentes fonctions permettant de rendre plus efficace
 //                : certaines actions répétitives, tel que la saisie utilisateur.
-// Modifications  :
+// Modifications  : Ajout de l'affichage de vecteurs criblés ainsi que de vecteur d'entiers.
 // Remarque(s)    : -
-// Compilateur    : Apple clang version 14.0.0
+// Compilateur    : MinGW w64 9.0.0 / Apple clang version 14.0.0
 // C++ version    : C++20
-//---------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "annexe.h"
 
-#include <iostream>
-#include <limits>       //Numeric limits
-#include <iomanip>
+#include <iostream>     // Utilisation de cout, cin
+#include <iomanip>      // Utilisation de setw
+#include <limits>       // Utilisation de numeric limits
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
 using namespace std;
 
+// Fonction permettant à l'utilisateur de saisir un entier et permet de le controler
+// en fonction de bornes données en paramètres
 int saisieEntier(const string& MSG, int min, int max, const string& MSG_ERREUR) {
 
     int  saisie;                 // Variable de stockage de la saisie
     bool erreur;                 // Variable de stockage de l'état de la saisie
 
+    // Tant que la saisie est mauvaise on redemende jusqu'à que la valeur soit exploitable
     do {
         // Affichage message de demande de saisie
-        cout << MSG;
+        cout << MSG << " [" << min << " - " << max << "] : ";
 
         // Vérifie si le flux est cassé ou si la valeur est en dehors des valeurs minimum et maximum
         erreur = not(cin >> saisie) or saisie < min or saisie > max;
@@ -45,56 +48,50 @@ int saisieEntier(const string& MSG, int min, int max, const string& MSG_ERREUR) 
     return saisie;
 }
 
-// Cette fonction permet à l'utilisateur de recommencer le programme
-bool repondOui() {
-    char saisie;                // Variable de stockage de la saisie
-
-    do {
-        // Affichage message de demande de saisie
-        cout << endl << "Voulez-vous recommencer le programme ? (o/n) : ";
-        cin >> saisie;
-
-        toupper(saisie);
-
-        VIDER_BUFFER;
-
-    }while(saisie != 'O' and saisie != 'N');
-
-    // Si l'utilisateur a saisi 'o' on retourne true
-    return saisie == 'O';
-}
-
-void afficheVecteur(const vector<bool> &vecteur, const string &titre, const int largeurColonne,
+// Fonction permettant d'afficher les valeurs d'un vecteur de type booleen sous format true = 0 et false = X
+void afficheVecteur(const vector<bool>& vecteur, const string &titre, const int largeurColonne,
                     const int nbreColonne){
 
+    // Affichage du titre
     cout << endl << titre << endl;
 
-    for (unsigned long i = 0 ; i < vecteur.size() ; ++i) {
+    // On parcoure le vecteur pour écrire tous ses éléments
+    for (size_t i = 0 ; i < vecteur.size() ; ++i) {
 
+        // Si la valeur est true alors on écrit O
         if(vecteur[i])
             cout << setw(largeurColonne) << "O";
+        // Si la valeur est false alors on écrit X
         else
             cout << setw(largeurColonne) << "X";
 
-        if(nbreColonne > 0 && i % (unsigned long)nbreColonne == (unsigned long)nbreColonne - 1)
+        // Lors ce que nous avons atteint le nombre de colonne alors on passe à la ligne
+        if(nbreColonne > 0 && i % (size_t)nbreColonne == (size_t)nbreColonne - 1)
             cout << endl;
     }
+
+    cout << endl;
 }
 
-void afficheVecteur(const vector<int>& vecteur, const string& titre, const string& separateur,
-                    const int largeurColonne, const int nbreColonne){
+// Fonction permettant d'afficher les valeurs d'un vecteur d'entier
+void afficheVecteur(const vector<int>& vecteur, const string& titre, const int largeurColonne,
+                    const int nbreColonne){
 
+    // Affichage du titre
     cout << endl << titre << endl;
 
-    for (unsigned long i = 0 ; i < vecteur.size() ; ++i) {
+    // On parcoure le vecteur pour écrire tous ses éléments
+    for (size_t i = 0 ; i < vecteur.size() ; ++i) {
 
-        if(i != 0) cout << separateur;
-
+        // On écrit la valeur du vecteur dans une zone de taille largeurColonne
         cout << setw(largeurColonne) << vecteur[i];
 
-        if( nbreColonne > 0 && i % (unsigned long)nbreColonne == (unsigned long)nbreColonne - 1
-            && i != 0 )
+        // Lors ce que nous avons atteint le nombre de colonne alors on passe à la ligne
+        if(nbreColonne > 0 && i % (unsigned long)nbreColonne == (unsigned long)nbreColonne - 1)
             cout << endl;
+
     }
+
+    cout << endl;
 }
 
