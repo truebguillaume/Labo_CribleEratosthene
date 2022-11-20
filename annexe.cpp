@@ -53,15 +53,14 @@ void afficheVecteur(const vector<bool>& vecteur, const string &titre, const int 
                     const int nbreColonne){
 
     // Affichage du titre
-    cout << endl << titre << endl;
+     cout << endl << titre << endl;
 
     // On parcoure le vecteur pour écrire tous ses éléments
     for (size_t i = 0 ; i < vecteur.size() ; ++i) {
 
-        // Si la valeur est true alors on écrit O
+        // Si la valeur est true alors on écrit O sinon  X
         if(vecteur[i])
             cout << setw(largeurColonne) << "O";
-        // Si la valeur est false alors on écrit X
         else
             cout << setw(largeurColonne) << "X";
 
@@ -70,7 +69,7 @@ void afficheVecteur(const vector<bool>& vecteur, const string &titre, const int 
             cout << endl;
     }
 
-    cout << endl;
+    cout << endl << endl;
 }
 
 // Fonction permettant d'afficher les valeurs d'un vecteur d'entier
@@ -92,6 +91,6 @@ void afficheVecteur(const vector<int>& vecteur, const string& titre, const int l
 
     }
 
-    cout << endl;
+    cout << endl << endl;
 }
 

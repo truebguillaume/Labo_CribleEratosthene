@@ -14,9 +14,10 @@
 #include <cstdlib>              // Utilisation de EXIT_SUCCESS
 #include <limits>               // Utilisation de numeric limits
 #include <vector>               // Utilisation des vecteurs
+#include <string>
 
 #include "annexe.h"             // Librairie personnelle
-#include "cribleEratosthene.h"  // Libraire pour calculer crible
+#include "cribleEratosthene.h"  // Librairie pour calculer le crible d'eratosthene
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
@@ -30,21 +31,19 @@ int main() {
     const int LARGEUR_COLONNE   = 4;        // Largeur d'une colonne d'affichage
 
     // Saisie pour récupérer le nombre de valeur à parcourir pour calculer
-    // les nombres premiers
+    // les nombres premiers.
     size_t nbreValeurs = (size_t)saisieEntier("Nombre de valeurs", MIN_VALEUR, MAX_VALEUR, "La valeur est hors-plage!");
 
-    // En fonction de nbreValeurs calculer un vecteur crible avec toutes les
-    // nombres premiers et l'affecter dans une vecteur de booleen
+    // En fonction de nbreValeurs calculer un vecteur crible avec tous les
+    // nombres premiers et l'affecter dans un vecteur de booleen et puis l'affiche.
     vector<bool> vecteurCriblage   = cribleEratosthene(nbreValeurs);
-
-    // Afficher le vecteur crible pour l'utilisateur
     afficheVecteur(vecteurCriblage, "Criblage du tableau", LARGEUR_COLONNE, NBRE_COLONNE);
 
-    // En fonction du vecteur crible on le parcours et recupere tous les nombres premiers
+    // En fonction du vecteur crible, on le parcourt et recupere tous les nombres premiers, on
+    // affiche le nombre de chiffres premier identifies et puis on les affiche.
     vector<int>  vecteurNbrPremier = nbrsPremier(vecteurCriblage);
-
-    // Afficher le vecteur de nombre premier pour l'utilisateur
-    afficheVecteur(vecteurNbrPremier, "Nombres premiers", LARGEUR_COLONNE, NBRE_COLONNE);
+    cout << vecteurNbrPremier.size() << " nombres premiers ont ete identifies.";
+    afficheVecteur(vecteurNbrPremier, "Nombres premiers:", LARGEUR_COLONNE, NBRE_COLONNE);
 
     // Demande à l'utilisateur d'appuyer sur enter pour quitter le programme
     cout << endl << "Appuyez sur ENTER pour quitter le programme.";

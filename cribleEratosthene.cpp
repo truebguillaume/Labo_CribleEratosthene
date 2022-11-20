@@ -16,28 +16,22 @@ using namespace std;
 
 // Fonction permettant de calculer un vecteur booleen de taille tailleVecteur
 // avec true si la valeur est un nombre premier
+// Source de l'algorithme : https://fr.wikipedia.org/wiki/Crible_d%27%C3%89ratosth%C3%A8ne
 vector<bool> cribleEratosthene(size_t tailleVecteur){
 
     // Vecteur booleen initialisé a true pour toutes les valeurs
     vector<bool> vecteurCriblage(tailleVecteur, true);
 
-    // Mets les valeurs 0 et 1 à false
+    // Mets les valeurs 0 et 1 à false, car ils ne sont pas des nombres premiers.
     vecteurCriblage[0] = false;
     vecteurCriblage[1] = false;
 
-    // Remplis le vecteur en fonction de tailleVecteur
+    // On traverse le tableau vecteurCriblage depuis la valeur 2 et pour chaque position qui est
+    // vrai, on met ces multiples à faux.
     for (size_t i = 2 ; i < tailleVecteur ; ++i)
-
-        // Si la valeur du vecteur en position i
-        if(vecteurCriblage[i]){
-
-            // Pour tous les mulitples de i
-            for (size_t j = 2; j <= tailleVecteur / (i); ++j){
-
-                // On mets le multiple à false
+        if(vecteurCriblage[i])
+            for (size_t j = 2; j <= tailleVecteur / i; ++j)
                 vecteurCriblage[i * j] = false;
-            }
-        }
 
     return vecteurCriblage;
 }
@@ -50,18 +44,13 @@ vector<int> nbrsPremier(const vector<bool> &vecCrible){
     // Réservation de valeurs en se basant sur la taille du vecteur crible
     vecNbrPremier.reserve(vecCrible.size());
 
-    // Pour tous les éléments du vecteur crible
-    for(size_t i = 0; i < vecCrible.size(); ++i){
-
-        // Si la valeur du vecteur en position i est true
-        if(vecCrible.at(i)){
-
-            // On ajoute i dans notre vecteur de nombre premier
+    // Pour tous les éléments du vecteur crible, si l'element i est vrai, alors on le rajoute au
+    // vecteur de nombre premier.
+    for(size_t i = 0; i < vecCrible.size(); ++i)
+        if(vecCrible.at(i))
             vecNbrPremier.push_back((int) i);
-        }
-    }
 
-    // Une fois le travail terminé on adapte la capcité du vecteur aux valeurs réeles
+    // Une fois le travail terminé on adapte la capacité du vecteur aux valeurs réeles
     vecNbrPremier.shrink_to_fit();
 
     return vecNbrPremier;

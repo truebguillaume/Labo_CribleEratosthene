@@ -10,8 +10,8 @@
 // C++ version    : C++20
 //----------------------------------------------------------------------------------------------------------------------
 
-#ifndef MODELCPP_ANNEXE_H
-    #define MODELCPP_ANNEXE_H
+#ifndef ANNEXE_H
+    #define ANNEXE_H
 
     #include <vector>          // nécessaire pour les paramètres
     #include <string>          // nécessaire pour les paramètres
@@ -46,7 +46,7 @@
 
     /** Fonction permettant d'afficher les valeurs d'un vecteurs de type int
     * -----------------------------------------------------------------------------------------------------------------
-    * @param vecteur            : correspond au vecteur de booleen
+    * @param vecteur            : correspond au vecteur de int
     * @param titre              : correspond au titre à afficher avant d'afficher le vecteur
     * @param largeurColonne     : correspond à la largeur d'affichage d'une valeur du vecteur
     * @param nbreColonne        : correspond au nombres de colonnes autorisée dans l'affichage
@@ -58,4 +58,4 @@
                         int largeurColonne = 0, int nbreColonne = 0);
 
 
-#endif //MODELCPP_ANNEXE_H
+#endif //ANNEXE_H
