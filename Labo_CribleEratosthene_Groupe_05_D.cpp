@@ -14,7 +14,6 @@
 #include <cstdlib>              // Utilisation de EXIT_SUCCESS
 #include <limits>               // Utilisation de numeric limits
 #include <vector>               // Utilisation des vecteurs
-#include <string>
 
 #include "annexe.h"             // Librairie personnelle
 #include "cribleEratosthene.h"  // Librairie pour calculer le crible d'eratosthene
@@ -30,7 +29,7 @@ int main() {
     const int NBRE_COLONNE      = 10;       // Nombre de colonnes d'affichage
     const int LARGEUR_COLONNE   = 4;        // Largeur d'une colonne d'affichage
 
-    // Saisie pour récupérer le nombre de valeur à parcourir pour calculer
+    // Saisie pour récupérer le nombre de valeurs à parcourir pour calculer
     // les nombres premiers.
     size_t nbreValeurs = (size_t)saisieEntier("Nombre de valeurs", MIN_VALEUR, MAX_VALEUR, "La valeur est hors-plage!");
 
@@ -45,7 +44,7 @@ int main() {
     cout << vecteurNbrPremier.size() << " nombres premiers ont ete identifies.";
     afficheVecteur(vecteurNbrPremier, "Nombres premiers:", LARGEUR_COLONNE, NBRE_COLONNE);
 
-    // Demande à l'utilisateur d'appuyer sur enter pour quitter le programme
+    // Demande à l'utilisateur d'appuyer sur entrer pour quitter le programme
     cout << endl << "Appuyez sur ENTER pour quitter le programme.";
     VIDER_BUFFER;
     return EXIT_SUCCESS;

@@ -27,7 +27,7 @@ int saisieEntier(const string& MSG, int min, int max, const string& MSG_ERREUR) 
     int  saisie;                 // Variable de stockage de la saisie
     bool erreur;                 // Variable de stockage de l'état de la saisie
 
-    // Tant que la saisie est mauvaise on redemende jusqu'à que la valeur soit exploitable
+    // Tant que la saisie est mauvaise on redemande jusqu'à que la valeur soit exploitable
     do {
         // Affichage message de demande de saisie
         cout << MSG << " [" << min << " - " << max << "] : ";
@@ -55,7 +55,7 @@ void afficheVecteur(const vector<bool>& vecteur, const string &titre, const int 
     // Affichage du titre
      cout << endl << titre << endl;
 
-    // On parcoure le vecteur pour écrire tous ses éléments
+    // On parcourt le vecteur pour écrire tous ses éléments
     for (size_t i = 0 ; i < vecteur.size() ; ++i) {
 
         // Si la valeur est true alors on écrit O sinon  X
@@ -79,13 +79,13 @@ void afficheVecteur(const vector<int>& vecteur, const string& titre, const int l
     // Affichage du titre
     cout << endl << titre << endl;
 
-    // On parcoure le vecteur pour écrire tous ses éléments
+    // On parcourt le vecteur pour écrire tous ses éléments
     for (size_t i = 0 ; i < vecteur.size() ; ++i) {
 
         // On écrit la valeur du vecteur dans une zone de taille largeurColonne
         cout << setw(largeurColonne) << vecteur[i];
 
-        // Lors ce que nous avons atteint le nombre de colonne alors on passe à la ligne
+        // Lors ce que nous avons atteint le nombre de colonnes alors on passe à la ligne
         if(nbreColonne > 0 && i % (unsigned long)nbreColonne == (unsigned long)nbreColonne - 1)
             cout << endl;
 
