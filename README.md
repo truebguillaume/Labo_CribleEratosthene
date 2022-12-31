@@ -1,4 +1,4 @@
-# PRG1 - Crible Eratosthene
+# PRG1 - Labo Crible Eratosthene
 
 OBJECTIF  
 -
